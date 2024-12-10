@@ -1,0 +1,42 @@
+🌟 Step-by-Step Guide: Analyzing Population Data Locally with PandasAI and Ollama 🌟
+Here's how you can use PandasAI and Ollama to analyze data 100% locally while ensuring your sensitive data stays secure.
+
+
+1️⃣ Import the Necessary Libraries
+Start by importing the required libraries.
+
+import pandas as pd
+from langchain_community.llms import Ollama
+from pandasai import SmartDataframe
+
+2️⃣ Load Your Dataset
+Load the population dataset using Pandas.
+data = pd.read_csv("population.csv")
+data.head()
+
+
+3️⃣ Set Up Your LLM with Ollama
+Configure the Ollama library to run your large language model locally.
+
+from langchain_community.llms import Ollama
+llm = Ollama(model="mistral")
+
+ Initialize the SmartDataframe
+Transform your Pandas DataFrame into a SmartDataframe that integrates natural language querying using PandasAI and Ollama.
+from pandasai import SmartDataframe
+df = SmartDataframe(data, config={"llm": llm})
+
+
+Ask Questions in Natural Language
+Query your data directly using natural language. For instance, to find the top 5 countries by population
+
+df.chat('Which are top 5 countries by population?')
+
+
+Calculate Total Population
+Compute the total population of the top 5 most populous countries in your dataset:
+print(df.chat("What is the total populations of the top 5 countries by population?"))
+
+Output:
+
+2058073260
